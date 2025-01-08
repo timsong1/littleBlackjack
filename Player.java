@@ -2,24 +2,24 @@ package project;
 
 import java.util.ArrayList;
 
-public class Player implements Comparable{  //實作compareTo方法
-	int money; //player身上的錢
-	ArrayList<Card> CardOnHand = new ArrayList<Card>(); //player手上的牌
+public class Player implements Comparable{  
+	int money; 
+	ArrayList<Card> CardOnHand = new ArrayList<Card>(); 
 	
 	public Player()
 	{
-		money = 1000; //一開始都定為1000元
+		money = 1000; 
 	}
 	
 	public void addCard(Card card)
 	{
 		CardOnHand.add(card);
 	}
-	public int getNumofCards() //手牌數
+	public int getNumofCards() 
 	{
 		return CardOnHand.size();
 	}
-	public String getCards() //取得手上所有的牌
+	public String getCards() 
 	{
 		String text = "";
 		for(Card card : CardOnHand)
@@ -28,10 +28,10 @@ public class Player implements Comparable{  //實作compareTo方法
 		}
 		return text;
 	}
-	public int getPoints() //取得目前的點數
+	public int getPoints() 
 	{
 		int point = 0;
-		int count = 0; //A的次數
+		int count = 0; 
 		for(Card card : CardOnHand)
 		{
 			if(card.getRank() == 1)
@@ -41,22 +41,22 @@ public class Player implements Comparable{  //實作compareTo方法
 			else
 				point += card.getRank();
 		}
-		for(int i = 0 ; i < count ; i++) // 最後再計算A的點數
+		for(int i = 0 ; i < count ; i++) 
 		{
-			if((point + 11) > 21) //如果以11點算，大於21的話就用1點算
+			if((point + 11) > 21) 
 				point += 1;
-			else				  //沒有的話就是用11點算
+			else				  
 				point += 11; 
 		}
 		return point;
 	}
 	@Override
-	public int compareTo(Object arg0) { //比較兩個Player的點數
+	public int compareTo(Object arg0) { 
 		// TODO Auto-generated method stub
-		Player player = (Player)arg0; //傳入的Player
+		Player player = (Player)arg0; 
 		return getPoints() - player.getPoints();
 	}
-	public double getSaveRate(Cards cards) //不爆牌的機率
+	public double getSaveRate(Cards cards) 
 	{
 		int points = getPoints();
 		double count = 0;
@@ -67,7 +67,7 @@ public class Player implements Comparable{  //實作compareTo方法
 		}
 		return count/cards.deck.size();
 	}
-	public double getLoseRate(Cards cards) //爆牌的機率
+	public double getLoseRate(Cards cards) 
 	{
 		int points = getPoints();
 		double count = 0;
@@ -90,11 +90,11 @@ public class Player implements Comparable{  //實作compareTo方法
 	{
 		return money;
 	}
-	public void clear() //清空手上的牌
+	public void clear() 
 	{
 		CardOnHand.clear();
 	}
-	public boolean isContinue(Cards cards) //只會用到多型的部分，所以這裡不寫
+	public boolean isContinue(Cards cards) // never used
 	{
 		return true;
 	}

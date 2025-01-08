@@ -5,10 +5,10 @@ import java.util.Random;
 
 public class Cards {
 
-	ArrayList<Card> deck = new ArrayList<Card>(); //存放一副牌的地方
+	ArrayList<Card> deck = new ArrayList<Card>();
 	Random random = new Random();
 	
-	public Cards() //新增此物件代表新增一副牌
+	public Cards() 
 	{
 		for(int i = 0 ; i <= 3 ; i++) //0~3
 			for(int j = 1 ; j <= 13 ; j++) //1~13
@@ -25,14 +25,14 @@ public class Cards {
 			cards += card+" ";
 		return cards;
 	}
-	public Card drawCard() //抽牌
+	public Card drawCard() 
 	{
 		if(deck.size() >0)
-			return deck.remove(random.nextInt(deck.size())); //用random獲取亂數，並用該值當作index來remove
+			return deck.remove(random.nextInt(deck.size())); 
 		else
 			return null;
 	}
-	public void reset() //把整副牌重製回52張
+	public void reset() 
 	{
 		deck = new ArrayList<Card>();
 		for(int i = 0 ; i <= 3 ; i++)
